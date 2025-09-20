@@ -7,6 +7,7 @@ import { MessageList } from '@/components/chat/MessageList';
 import { MessageInput } from '@/components/chat/MessageInput';
 import { Toaster } from '@/components/ui/toaster';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { BACKEND_CONFIG } from '@/config/backend';
 
 const ChatInterface: React.FC = () => {
   const { isLoggedIn } = useChatContext();
@@ -36,7 +37,7 @@ const ChatInterface: React.FC = () => {
 
 const Chat: React.FC = () => {
   return (
-    <ChatProvider>
+    <ChatProvider backendHost={BACKEND_CONFIG.host}>
       <div className="min-h-screen bg-background">
         <ChatInterface />
         <Toaster />
