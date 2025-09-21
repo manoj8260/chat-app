@@ -1,4 +1,6 @@
-# Welcome to your Lovable project
+# ConnectSphere - Real-time Chat Application
+
+A modern React TypeScript chat application with FastAPI backend integration, built with Lovable.
 
 ## Project info
 
@@ -54,11 +56,76 @@ npm run dev
 
 This project is built with:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+**Frontend:**
+- **React 18** with TypeScript
+- **Vite** for development and building
+- **Tailwind CSS** for styling with custom design system
+- **shadcn-ui** for UI components
+- **Lucide React** for icons
+- **Custom hooks** for WebSocket management
+- **Context API** for state management
+
+**Backend Integration:**
+- **FastAPI** backend connection
+- **WebSocket** for real-time messaging
+- **REST API** for room management
+
+## Chat Application Features
+
+- 🚀 **Real-time messaging** with WebSocket connections
+- 🏠 **Multiple chat rooms** with room creation/joining
+- 👥 **User management** with online status
+- 📱 **Responsive design** for mobile and desktop
+- 🎨 **Modern UI** with glassmorphism effects and dark theme
+- 🔄 **Auto-reconnection** with connection status indicators
+- 📬 **Unread message indicators** and message history
+
+## FastAPI Backend Integration
+
+### Required Endpoints
+
+Your FastAPI backend should provide:
+
+**WebSocket Endpoint:**
+```
+ws://localhost:8003/ws/{username}?room_id={room_id}
+```
+
+**HTTP API Endpoints:**
+```
+GET http://localhost:8003/api/rooms
+```
+
+**Message Format:**
+```json
+{
+  "username": "string",
+  "message": "string", 
+  "timestamp": "string",
+  "message_type": "message" | "system" | "user_join" | "user_leave",
+  "room_id": "string"
+}
+```
+
+### Configuration
+
+Update the backend configuration in `src/config/backend.ts`:
+
+```typescript
+export const BACKEND_CONFIG = {
+  host: "localhost:8003", // Your FastAPI server address
+  maxReconnectAttempts: 5,
+  reconnectDelay: 3000,
+  connectionTimeout: 10000
+};
+```
+
+## Getting Started with Chat
+
+1. **Start your FastAPI backend** on `localhost:8003`
+2. **Install dependencies**: `npm install`
+3. **Start the React app**: `npm run dev`
+4. **Open browser** to `http://localhost:5173`
 
 ## How can I deploy this project?
 
