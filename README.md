@@ -79,6 +79,26 @@ This project is built with:
 - 🎨 **Modern UI** with glassmorphism effects and dark theme
 - 🔄 **Auto-reconnection** with connection status indicators
 - 📬 **Unread message indicators** and message history
+- 🔐 **Frontend Authentication** with login, register, and logout
+- ⚡ **Quick Chat** mode for guest users
+- 🎯 **Beautiful landing page** with feature highlights
+
+## Authentication Features
+
+### Frontend Authentication System
+- **Login Form**: Username/password authentication
+- **Registration Form**: Create new accounts with username, email, password
+- **Logout Functionality**: Secure logout with confirmation dialog
+- **Quick Chat**: Guest mode for instant messaging without registration
+- **Session Management**: Persistent login state with localStorage
+- **Password Visibility Toggle**: Enhanced UX for password fields
+- **Form Validation**: Client-side validation with error messages
+
+### User Management
+- **User Context**: Global authentication state management
+- **Auth Guards**: Route protection and redirection
+- **User Badge**: Display current user info in chat header
+- **Guest Mode**: Special handling for anonymous users
 
 ## FastAPI Backend Integration
 

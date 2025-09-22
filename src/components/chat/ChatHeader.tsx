@@ -1,11 +1,13 @@
 import React from 'react';
 import { Badge } from '@/components/ui/badge';
 import { useChatContext } from '@/contexts/ChatContext';
-import { Hash, Wifi, WifiOff } from 'lucide-react';
+import { useAuth } from '@/contexts/AuthContext';
+import { Hash, Wifi, WifiOff, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export const ChatHeader: React.FC = () => {
   const { currentRoom, isConnected, connectionStatus } = useChatContext();
+  const { user, isQuickChatMode } = useAuth();
 
   return (
     <div className="h-16 bg-chat-main border-b border-border/50 flex items-center justify-between px-6">
@@ -14,9 +16,17 @@ export const ChatHeader: React.FC = () => {
         <div className="flex items-center gap-2">
           <Hash className="h-5 w-5 text-accent" />
           <h1 className="text-xl font-semibold text-foreground">
-            {currentRoom}
+            {currentRoom || 'ConnectSphere'}
           </h1>
         </div>
+        
+        {/* User Badge */}
+        {(user || isQuickChatMode) && (
+          <Badge variant="outline" className="bg-primary/10 border-primary/30 text-primary">
+            <User className="w-3 h-3 mr-1" />
+            {isQuickChatMode ? 'Guest' : user?.username}
+          </Badge>
+        )}
       </div>
 
       {/* Connection Status */}
