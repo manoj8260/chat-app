@@ -34,7 +34,11 @@ const ChatInterface: React.FC = () => {
         {/* Header with logout */}
         <div className="flex items-center justify-between p-4 border-b border-border/20 bg-chat-sidebar/50 backdrop-blur-sm">
           <ChatHeader />
-          <LogoutButton onLogout={logout} />
+          <LogoutButton 
+            onLogout={logout} 
+            variant="outline"
+            className="border-destructive/20 text-destructive hover:bg-destructive/10 hover:border-destructive/40"
+          />
         </div>
         
         <MessageList />

@@ -15,7 +15,7 @@ interface AuthFormProps {
 
 export const AuthForm: React.FC<AuthFormProps> = ({ onLogin, onRegister, onQuickChat }) => {
   const [loginData, setLoginData] = useState({ username: '', password: '' });
-  const [registerData, setRegisterData] = useState({ username: '', email: '', password: '', confirmPassword: '' });
+  const [registerData, setRegisterData] = useState({ username: '', email: '', password: '' });
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [activeTab, setActiveTab] = useState('login');
@@ -60,14 +60,6 @@ export const AuthForm: React.FC<AuthFormProps> = ({ onLogin, onRegister, onQuick
       return;
     }
 
-    if (registerData.password !== registerData.confirmPassword) {
-      toast({
-        title: "Error",
-        description: "Passwords do not match",
-        variant: "destructive",
-      });
-      return;
-    }
 
     if (registerData.password.length < 6) {
       toast({
@@ -249,17 +241,6 @@ export const AuthForm: React.FC<AuthFormProps> = ({ onLogin, onRegister, onQuick
                     </div>
                   </div>
                   
-                  <div className="space-y-2">
-                    <Label htmlFor="register-confirm-password">Confirm Password</Label>
-                    <Input
-                      id="register-confirm-password"
-                      type={showPassword ? "text" : "password"}
-                      placeholder="Confirm your password"
-                      value={registerData.confirmPassword}
-                      onChange={(e) => setRegisterData({ ...registerData, confirmPassword: e.target.value })}
-                      className="bg-background/50 border-border/50 focus:border-primary"
-                    />
-                  </div>
                   
                   <Button 
                     type="submit" 
